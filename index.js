@@ -1,6 +1,6 @@
 // select all the descriptions on the page
 
-const descriptions = document.querySelectorAll(".description");
+const descriptions = document.querySelectorAll(".description-display");
 
 for (let desc of descriptions.values()) {
   let content = desc.innerText;
@@ -14,7 +14,7 @@ for (let desc of descriptions.values()) {
 }
 
 // select all rating values
-const ratings = document.querySelectorAll(".rating .value");
+const ratings = document.querySelectorAll(".rating-display .value");
 
 for (let rating of ratings) {
   let ratingValue = parseFloat(rating.innerText);
@@ -26,7 +26,7 @@ for (let rating of ratings) {
 }
 
 // Select all parks
-const parks = document.querySelectorAll(".park");
+const parks = document.querySelectorAll(".park-display");
 const numberParks = parks.length;
 
 // create a new element
@@ -46,7 +46,7 @@ header.appendChild(newElement);
 const main = document.querySelector("main");
 
 //select a single park
-const park = main.querySelector(".park");
+const park = main.querySelector(".park-display");
 
 // remove that park
 // main.removeChild(park);
