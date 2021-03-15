@@ -14,7 +14,7 @@ const elem02 = document.querySelector("button");
 console.log(elem02);
 
 // find an element with class "area"
-const elem03 = document.querySelector(".area");
+const elem03 = document.querySelector(".area-display");
 console.log(elem03);
 
 // find an <div> that  is a descendant of class "stat"
@@ -49,7 +49,7 @@ for (let i = 0; i < heading3List.length; i++) {
 }
 
 // find all divs containing ratings
-const ratings = document.querySelectorAll(".rating .value");
+const ratings = document.querySelectorAll(".rating-display .value");
 
 // iterate over entire list
 for (let element of ratings.values()) {
@@ -57,7 +57,7 @@ for (let element of ratings.values()) {
 }
 
 // find all divs containing areas
-const areas = document.querySelectorAll(".area .value");
+const areas = document.querySelectorAll(".area-display .value");
 
 for (let i = 0; i < areas.length; i++) {
   const element = areas[i];
