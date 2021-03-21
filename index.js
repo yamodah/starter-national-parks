@@ -1,14 +1,13 @@
 const submitHandler = (event) => {
   event.preventDefault();
 
-  const form = document.querySelector("#parkForm");
+  const form = document.querySelector("#park-form");
   const formData = new FormData(form);
-
   // Keep track of if any errors are found
   let hasErrors = false;
 
   formData.forEach((value, key) => {
-    let errorId = `#${key.slice(4).toLowerCase()}Error`;
+    let errorId = `#${key}-error`;
     if (value.trim() === "") {
       document.querySelector(errorId).style.display = "block";
       hasErrors = true;
@@ -21,12 +20,12 @@ const submitHandler = (event) => {
   if (!hasErrors) {
     // create an empty object
     const park = {
-      name: formData.get("parkName"),
-      location: formData.get("parkLocation"),
-      description: formData.get("parkDescription"),
-      established: formData.get("parkEstablished"),
-      area: formData.get("parkArea"),
-      rating: formData.get("parkRating"),
+      name: formData.get("name"),
+      location: formData.get("location"),
+      description: formData.get("description"),
+      established: formData.get("established"),
+      area: formData.get("area"),
+      rating: formData.get("rating"),
     };
 
     parks.push(park);
@@ -86,21 +85,21 @@ const renderOnePark = (park) => {
   const { name, location, description, established, area, rating } = park;
 
   const content = `
-      <section class="park">
+      <section class="park-display">
         <h2>${name}</h2>
-        <div class="location">${location}</div>
-        <div class="description">${description}</div>
-        <button class="rateBtn" title="Add to Favourites">&#9734;</button>
+        <div class="location-display">${location}</div>
+        <div class="description-display">${description}</div>
+        <button class="rate-button" title="Add to Favourites">&#9734;</button>
         <div class="stats">
-          <div class="established stat">
+          <div class="established-display stat">
             <h3>Established</h3>
             <div class="value">${established}</div>
           </div>
-          <div class="area stat">
+          <div class="area-display stat">
             <h3>Area</h3>
             <div class="value">${area}</div>
           </div>
-          <div class="rating stat">
+          <div class="rating-display stat">
             <h3>Rating</h3>
             <div class="value">${rating}</div>
           </div>
@@ -127,13 +126,13 @@ const render = () => {
 // the point where all the code starts
 const main = () => {
   // select the nameSorter link
-  const nameSorter = document.querySelector("#nameSorter");
+  const nameSorter = document.querySelector("#name-sorter");
 
   // add an event listener
   nameSorter.addEventListener("click", nameSorterClickHandler);
 
   // select the ratingSorter link
-  const ratingSorter = document.querySelector("#ratingSorter");
+  const ratingSorter = document.querySelector("#rating-sorter");
 
   // add an event listener
   ratingSorter.addEventListener("click", ratingSorterClickHandler);
@@ -145,7 +144,7 @@ const main = () => {
   main.addEventListener("click", favoriteButtonClickHandler);
 
   // get the form element
-  const form = document.querySelector("#parkForm");
+  const form = document.querySelector("#park-form");
 
   // attach the submit handler
   form.addEventListener("submit", submitHandler);
