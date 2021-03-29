@@ -26,10 +26,10 @@ const sortByName = (parkA, parkB) => {
 // function for sorting by rating
 const sortByRating = (parkA, parkB) => {
   const parkARating = parseFloat(
-    parkA.querySelector(".rating > .value").innerText
+    parkA.querySelector(".rating-display > .value").innerText
   );
   const parkBRating = parseFloat(
-    parkB.querySelector(".rating > .value").innerText
+    parkB.querySelector(".rating-display > .value").innerText
   );
   return parkBRating - parkARating;
 };
@@ -42,7 +42,7 @@ const nameSorterClickHandler = (event) => {
   const main = document.querySelector("main");
 
   // 2. get the list of parks
-  const parksList = main.querySelectorAll(".park");
+  const parksList = main.querySelectorAll(".park-display");
 
   // 3. empty the main
   main.innerHTML = "";
@@ -67,7 +67,7 @@ const ratingSorterClickHandler = (event) => {
   const main = document.querySelector("main");
 
   // 2. get the list of parks
-  const parksList = main.querySelectorAll(".park");
+  const parksList = main.querySelectorAll(".park-display");
 
   // 3. empty the main
   main.innerHTML = "";
@@ -87,19 +87,19 @@ const ratingSorterClickHandler = (event) => {
 // the point where all the code starts
 const main = () => {
   // select the nameSorter link
-  const nameSorter = document.querySelector("#nameSorter");
+  const nameSorter = document.querySelector("#name-sorter");
 
   // add an event listener
   nameSorter.addEventListener("click", nameSorterClickHandler);
 
   // select the ratingSorter link
-  const ratingSorter = document.querySelector("#ratingSorter");
+  const ratingSorter = document.querySelector("#rating-sorter");
 
   // add an event listener
   ratingSorter.addEventListener("click", ratingSorterClickHandler);
 
   // select all the buttons for all the parks
-  const allBtns = document.querySelectorAll(".rateBtn");
+  const allBtns = document.querySelectorAll(".rate-button");
 
   // iterate the list of buttons and add an event handler to each
   allBtns.forEach((btn) => {
