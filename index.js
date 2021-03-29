@@ -26,10 +26,10 @@ const sortByName = (parkA, parkB) => {
 // function for sorting by rating
 const sortByRating = (parkA, parkB) => {
   const parkARating = parseFloat(
-    parkA.querySelector(".rating > .value").innerText
+    parkA.querySelector(".rating-display > .value").innerText
   );
   const parkBRating = parseFloat(
-    parkB.querySelector(".rating > .value").innerText
+    parkB.querySelector(".rating-display > .value").innerText
   );
   return parkBRating - parkARating;
 };
@@ -42,7 +42,7 @@ const nameSorterClickHandler = (event) => {
   const main = document.querySelector("main");
 
   // 2. get the list of parks
-  const parksList = main.querySelectorAll(".park");
+  const parksList = main.querySelectorAll(".park-display");
 
   // 3. empty the main
   main.innerHTML = "";
@@ -67,7 +67,7 @@ const ratingSorterClickHandler = (event) => {
   const main = document.querySelector("main");
 
   // 2. get the list of parks
-  const parksList = main.querySelectorAll(".park");
+  const parksList = main.querySelectorAll(".park-display");
 
   // 3. empty the main
   main.innerHTML = "";

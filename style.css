@@ -35,7 +35,7 @@ main {
   padding: 6px;
 }
 
-.park {
+.park-display {
   box-shadow: 0 0 3px 2px rgba(115, 66, 48, 0.2);
   border-radius: 6px;
   position: relative;
@@ -46,7 +46,7 @@ main {
   flex-direction: column;
 }
 
-.park > h2 {
+.park-display > h2 {
   background-color: #734230;
   color: #fcc988;
   padding: 4px;
@@ -56,13 +56,13 @@ main {
   margin-top: 0;
 }
 
-.location {
+.location-display {
   font-weight: 300;
   font-size: 0.8rem;
   padding-left: 4px;
 }
 
-.description {
+.description-display {
   margin-top: 4px;
   padding: 4px;
   flex: 1;
