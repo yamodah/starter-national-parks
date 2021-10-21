@@ -1,12 +1,25 @@
 const submitHandler = (event) => {
-  event.preventDefault();
-  console.log("The form was submitted");
-  // Get the name input
-  const parkName = document.querySelector("#name-input").value;
-  const formData = new FormData(event.target);
-  console.log(formData.get("location"));
-  //console.log(parkName);
-};
+    event.preventDefault();
+  
+    const form = event.target;
+    const formData = new FormData(form);
+  
+    const errors = validateForm(formData);
+  
+    // Clear all previous errors
+    const errorElements = document.querySelectorAll(".error");
+    for (let element of errorElements) {
+      element.style.display = "none";
+    }
+  
+    // Display any new errors
+    Object.keys(errors).forEach((key) => {
+      // Find the specific error element
+      const errorElement = document.querySelector(`#${key}-form .error`);
+      errorElement.innerHTML = errors[key];
+      errorElement.style.display = "block";
+    });
+  };
 const main = () => {
   // Get the form element
   const form = document.querySelector("#park-form");
@@ -14,10 +27,19 @@ const main = () => {
   // Attach the submit handler
   form.addEventListener("submit", submitHandler);
 };
+
 window.addEventListener("DOMContentLoaded", main);
+
 function validateExists(value) {
   return value && value.trim();
 }
+function validateNumber(value) {
+    return !isNaN(value);
+  }
+function validateRange(value, min, max) {
+    return value >= min && value <= max;
+  }
+
 function validateForm(formData) {
   const errors = {};
 
@@ -53,3 +75,4 @@ function validateForm(formData) {
 
   return errors;
 }
+
