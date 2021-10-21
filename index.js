@@ -21,13 +21,13 @@ findRatingDivs.forEach(elem=>{
         elem = parseFloat(elem.innerText)
         //console.log(elem)
     })
-findRatingDivs.forEach(elem=>{
+/*findRatingDivs.forEach(elem=>{
         rate = parseFloat(elem.innerText)
         if(rate>4.7){
             elem.classList.add("high-rating");
             elem.classList.remove("value")
         }
-    })
+    })*/
 const descriptions = document.querySelectorAll(".description-display");
 for (let desc of descriptions.values()) {
     let content = desc.innerText;
@@ -115,3 +115,50 @@ nameSorter.addEventListener("click", (event) => {
       main.appendChild(park);
     });
   });
+
+
+  // Function for sorting by name
+const sortByRating = (parkA, parkB) => {
+    const parkARate = parkA.querySelector(".rating-display .value").innerText;
+    const parkBRate = parkB.querySelector(".rating-display .value").innerText;
+    console.log(parkARate)
+    console.log(parkBRate)
+    if (parkARate < parkBRate) {
+      return -1;
+    } else if (parkARate > parkBRate) {
+      return 1;
+    } else {
+      return 0;
+    }
+  };
+  
+  // make the event listener callback function
+  const ratingSorterClickHandler = (event) => {
+    event.preventDefault();
+  
+    // 1.  Get the main element
+    const main = document.querySelector("main");
+  
+    // 2. Get the list of parks
+    const parksList = main.querySelectorAll(".park-display");
+  
+    // 3. Empty the main
+    main.innerHTML = "";
+  
+    // 4. Create an array
+    const parksArray = Array.from(parksList);
+  
+    // 5. Sort the array
+    parksArray.sort(sortByRating);
+  
+    // 6. Insert each park into the DOM
+    parksArray.forEach((park) => {
+      main.appendChild(park);
+    });
+  };
+  
+  // Select the `ratingSorter` link
+  const rateSorter = document.querySelector("#rating-sorter");
+  
+  // Add an event listener
+  rateSorter.addEventListener("click", ratingSorterClickHandler);
